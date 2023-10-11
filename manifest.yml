@@ -1,0 +1,12 @@
+---
+applications:
+- name: rndbackend
+  path: .
+  default-route: true
+  buildpack: nodejs_buildpack
+  memory: 128M
+  services:
+  - postgresql-cf
+  - dest_EczPodPlugins
+  - connectivity-cf
+  - applogs
