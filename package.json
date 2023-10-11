@@ -1,5 +1,5 @@
 {
-  "name": "rndbackend",
+  "name": "@kenantelyakar/dmcbackend",
   "version": "1.0.1",
   "main": "src/index.js",
   "engines": {
