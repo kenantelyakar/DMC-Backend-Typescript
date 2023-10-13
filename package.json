@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "deploy": "cf8 push",
-    "start": "node --inspect src",
+    "start": "node dist/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -31,6 +31,7 @@
     "express-formidable": "^1.2.0",
     "pg-monitor": "2.0.0",
     "pg-promise": "11.5.4",
+    "rimraf": "^5.0.5",
     "sap-cf-axios": "0.4.10",
     "tsc": "2.0.4",
     "typescript": "^4.9.5",

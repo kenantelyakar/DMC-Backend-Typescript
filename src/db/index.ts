@@ -19,33 +19,39 @@ const initOptions: IInitOptions<IExtensions> = {
     }
 };
 function returnUriToDB() {
-        let hostname = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').hostname).replaceAll("\"","");
-        let database = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').dbname).replaceAll("\"","");
-        let user = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').username).replaceAll("\"","");
-        let password = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').password).replaceAll("\"","");
-        let cert = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').sslcert).replaceAll("\"","");
+    try {
+        let hostname = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').hostname).replaceAll("\"", "");
+        let database = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').dbname).replaceAll("\"", "");
+        let user = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').username).replaceAll("\"", "");
+        let password = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').password).replaceAll("\"", "");
+        let cert = JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').sslcert).replaceAll("\"", "");
 
-        let port :number = +JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').port);
+        let port: number = +JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').port);
         console.log(port + "+");
-        if(isNaN(port)){
+        if (isNaN(port)) {
             port = parseInt(JSON.stringify(xsenv.cfServiceCredentials('postgresql-cf').port));
             console.log("parseInt" + port);
         }
-        if(isNaN(port)){
+        if (isNaN(port)) {
             port = 3951;
             console.log("3951 hardcoded");
         }
-      return {
+        return {
             host: hostname,
-            port:  port,
-            database: database ,
+            port: port,
+            database: database,
             user: user,
             password: password,
             ssl: {
-                rejectUnauthorized : false,
-                ca   : cert
+                rejectUnauthorized: false,
+                ca: cert
             }
         }
+    }catch (e){
+        console.warn("DB Connection parameters cannot loaded");
+        return {};
+    }
+
 }
 // Initializing the library:
 const pgp = pgPromise(initOptions);

@@ -11,7 +11,10 @@ import {NCUploadService} from "./srv/impl/batchUpload/NCUploadService";
 
 dotenv.config();
 const app: Express = express();
-const port = process.env.PORT;
+let port = "3001";
+if(process.env.PORT !== undefined){
+    port = process.env.PORT;
+}
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.get('/getBomBySfc', (req: Request, res: Response, next :NextFunction) => {
