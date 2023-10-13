@@ -1,6 +1,6 @@
 {
   "name": "@kenantelyakar/dmcbackend",
-  "version": "1.0.1",
+  "version": "latest",
   "main": "src/index.js",
   "engines": {
     "node": "18.17.0",
@@ -37,7 +37,7 @@
     "typescript": "^4.9.5",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
-  "description": "DMC R&amp;D Typescript codes",
+  "description": "DMC RnD Typescript codes",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kenantelyakar/DMC-Backend-Typescript.git"
