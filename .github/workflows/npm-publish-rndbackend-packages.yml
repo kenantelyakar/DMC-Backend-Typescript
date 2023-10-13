@@ -19,8 +19,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: kenantelyakar
+          password: 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
       - run: docker build -t kenantelyakar/dmc-backend-api . --no-cache
       - run: docker push kenantelyakar/dmc-backend-api
 
