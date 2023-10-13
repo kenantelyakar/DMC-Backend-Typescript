@@ -15,7 +15,14 @@ jobs:
         with:
           node-version: 16
       - run: npm install && npm rebuild typescript && npm run build
-      - run: docker compose -f docker-compose.dev.yml up
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker build -t kenantelyakar/dmc-backend-api . --no-cache
+      - run: docker push kenantelyakar/dmc-backend-api
 
   publish-gpr:
     needs: build
